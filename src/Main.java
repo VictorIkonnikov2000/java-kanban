@@ -19,7 +19,7 @@ public class Main {
         Subtask subtask1 = taskManager.createSubtask(new Subtask("Задача 1", "Сделать фз4",
                 TaskStatus.NEW, epic1.getId()));
         Subtask subtask2 = taskManager.createSubtask(new Subtask("Задача 2", "Повторить материал",
-                TaskStatus.NEW, epic1.getId()));
+                TaskStatus.DONE, epic1.getId()));
 
 
 
