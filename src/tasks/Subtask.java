@@ -9,4 +9,8 @@ public class Subtask extends Task {
         super(name, description, taskStatus);
         this.epicId = epicId;
     }
+
+    public int getEpicId() {
+        return epicId;
+    }
 }
