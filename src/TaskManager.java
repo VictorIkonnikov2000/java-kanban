@@ -146,7 +146,7 @@ public class TaskManager {
         }
     }
 
-    public ArrayList<Subtask> getSubtasksByEpicId(int epicId) { // Получение списка всех подзадач определенного эпика
+    public ArrayList<Subtask> getSubtasksByEpicId(int epicId) {
         Epic epic = epics.get(epicId);
         if (epic != null) {
             return new ArrayList<>(epic.getSubtasks());
