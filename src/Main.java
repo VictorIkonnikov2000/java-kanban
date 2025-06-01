@@ -1,16 +1,20 @@
+import menegers.Managers;
+import menegers.TaskManager;
 import tasks.*;
-
-import java.sql.SQLOutput;
 
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Поехали!");
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = Managers.getDefoult();
 
         //написать тесты
         Task task1 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
+                TaskStatus.NEW));
+        Task task2 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
+                TaskStatus.NEW));
+        Task task3 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
                 TaskStatus.NEW));
 
 
@@ -32,10 +36,25 @@ public class Main {
 
 
 
+
         System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getTask(3));
+        System.out.println(taskManager.getEpic(4));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getSubtask(5));
+        System.out.println(taskManager.getTask(1));
+        System.out.println(taskManager.getSubtask(6));
+        System.out.println((taskManager.getSubtask(5)));
 
+        System.out.println(taskManager.getSubtasksByEpicId(4));
 
-        System.out.println(taskManager.getSubtasksByEpicId(2));
+        System.out.println("Проверяем историю");
+        System.out.println(taskManager.getHistory());
+
 
     }
 
