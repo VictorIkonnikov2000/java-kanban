@@ -33,7 +33,7 @@ public class Main {
         System.out.println(taskManager.getEpics());
 
         System.out.println(taskManager.getSubtasks());
-
+       //Делаю коммит и пуш через Idea
 
 
 
