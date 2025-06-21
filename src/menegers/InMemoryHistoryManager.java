@@ -21,11 +21,10 @@ public class InMemoryHistoryManager implements HistoryManager{
 
     @Override
     public void remove(int id) {
-        // Удаляем задачу из истории по ее ID
-        Node node = nodes.get(id); // Получаем узел из map по ID
+        Node node = nodes.get(id);
         if (node != null) {
-            removeNode(node); // Вызываем метод для удаления узла из двусвязного списка
-            nodes.remove(id); // Удаляем запись из map
+            removeNode(node);
+            nodes.remove(id);
         }
     }
 
@@ -36,45 +35,45 @@ public class InMemoryHistoryManager implements HistoryManager{
         }
         int taskId = task.getId();
         if (nodes.containsKey(taskId)) {
-            remove(taskId); // Если задача уже есть в истории, удаляем ее
+            remove(taskId);
         }
 
-        linkLast(task); // Добавляем задачу в двусвязный список
-        nodes.put(taskId, last); // Сохраняем соответствие между ID задачи и узлом
+        linkLast(task);
+        nodes.put(taskId, last);
 
         if (nodes.size() > MAX_LIMIT) {
-            removeNode(first); // Если превышен лимит, удаляем самую старую задачу
+            removeNode(first);
         }
     }
 
     private void removeNode(Node node){
-        // Удаляет узел из двусвязного списка
+
         if (node == null) {
-            return; // Проверка на null
+            return;
         }
 
         if (node.prev != null) {
             node.prev.next = node.next;
         } else {
-            first = node.next; // Если удаляется первый элемент, обновляем ссылку на первый элемент
+            first = node.next;
         }
 
         if (node.next != null) {
             node.next.prev = node.prev;
         } else {
-            last = node.prev; // Если удаляется последний элемент, обновляем ссылку на последний элемент
+            last = node.prev;
         }
     }
 
     private void linkLast(Task task){
-        Node newNode = new Node(task,last,null); // Создаем новый узел
+        Node newNode = new Node(task,last,null); // Создаем новую таблицу
         if (first == null) {
-            first = newNode; // Если список пуст, новый узел становится первым
+            first = newNode;
         } else {
-            last.next = newNode; // Иначе, добавляем новый узел в конец списка
-            newNode.prev = last; // Устанавливаем ссылку на предыдущий узел
+            last.next = newNode;
+            newNode.prev = last;
         }
-        last = newNode; // Обновляем ссылку на последний узел
+        last = newNode;
     }
 
     private static class Node{
