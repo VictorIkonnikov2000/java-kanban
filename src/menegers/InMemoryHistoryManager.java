@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InMemoryHistoryManager implements HistoryManager{
-    private Map<Integer,Node> nodes = new HashMap<>();
+public class InMemoryHistoryManager implements HistoryManager {
+    private Map<Integer, Node> nodes = new HashMap<>();
     private Node first;
     private Node last;
 
@@ -48,7 +48,7 @@ public class InMemoryHistoryManager implements HistoryManager{
 
     }
 
-    private void removeNode(Node node){
+    private void removeNode(Node node) {
 
         if (node == null) {
             return;
@@ -67,8 +67,8 @@ public class InMemoryHistoryManager implements HistoryManager{
         }
     }
 
-    private void linkLast(Task task){
-        Node newNode = new Node(task,last,null); // Создаем новую таблицу
+    private void linkLast(Task task) {
+        Node newNode = new Node(task, last, null); // Создаем новую таблицу
         if (first == null) {
             first = newNode;
         } else {
@@ -78,7 +78,7 @@ public class InMemoryHistoryManager implements HistoryManager{
         last = newNode;
     }
 
-    private static class Node{
+    private static class Node {
         Task value;
         Node prev;
         Node next;
