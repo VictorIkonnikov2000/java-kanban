@@ -8,15 +8,20 @@ import java.util.List;
 import java.util.Map;
 
 public class InMemoryHistoryManager implements HistoryManager{
-    private final List<Task> history = new ArrayList<>();
-    private final int MAX_LIMIT = 10;
-    Map<Integer,Node> nodes = new HashMap<>();
-    Node first;
-    Node last;
+    private Map<Integer,Node> nodes = new HashMap<>();
+    private Node first;
+    private Node last;
 
     @Override
     public List<Task> getHistory() {
-        return new ArrayList<>(history); // альтернативный способ:return List.copyOf(history);
+        ArrayList<Task> tasks = new ArrayList<>();
+
+        Node node = first;
+        while (node != null) {
+            tasks.add(node.value);
+            node = node.next;
+        }
+        return tasks;
     }
 
     @Override
@@ -41,9 +46,6 @@ public class InMemoryHistoryManager implements HistoryManager{
         linkLast(task);
         nodes.put(taskId, last);
 
-        if (nodes.size() > MAX_LIMIT) {
-            removeNode(first);
-        }
     }
 
     private void removeNode(Node node){
