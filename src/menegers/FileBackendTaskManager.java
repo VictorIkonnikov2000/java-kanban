@@ -1,5 +1,6 @@
 package menegers;
 
+import exceptions.SaveFailedException;
 import tasks.Epic;
 import tasks.Subtask;
 import tasks.Task;
@@ -182,7 +183,7 @@ public class FileBackendTaskManager extends  InMemoryTaskManager {
             }
 
         } catch (IOException e) {
-            System.out.println("Не получилось прочитать файл.");
+            throw new SaveFailedException("Ошибка при чтении файла: " + e.getMessage());
         }
         return taskManager;
     }
