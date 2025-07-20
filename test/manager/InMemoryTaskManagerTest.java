@@ -23,7 +23,7 @@ public class InMemoryTaskManagerTest {
 
     @Test
     void createAndGetTask() {
-        Task task = new Task("Задача1", "Cделать тесты", TaskStatus.NEW);
+        Task task = new Task("Задача1", "Cделать тесты", TaskStatus.NEW,null,null);
         taskManager.createTask(task);
 
         Task savedTask = taskManager.getTask(task.getId());
@@ -65,7 +65,7 @@ public class InMemoryTaskManagerTest {
         taskManager.createEpic(epic);
 
         // Создаем Subtask
-        Subtask subtask = new Subtask("Test Subtask", "Test Subtask Description", TaskStatus.NEW, epic.getId());
+        Subtask subtask = new Subtask("Test Subtask", "Test Subtask Description", TaskStatus.NEW, epic.getId(),null,null);
         taskManager.createSubtask(subtask);
 
         // Получаем Subtask по id

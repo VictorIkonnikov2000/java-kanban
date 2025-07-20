@@ -200,7 +200,7 @@ public class FileBackendTaskManager extends  InMemoryTaskManager {
 
         switch (type) {
             case "TASK":
-                Task task = new Task(name, description, status);
+                Task task = new Task(name, description, status,null,null);
                 task.setId(id);
                 return task;
             case "EPIC":
@@ -211,7 +211,7 @@ public class FileBackendTaskManager extends  InMemoryTaskManager {
             case "SUBTASK":
                 if (data.length < 6) return null;
                 int epicId = Integer.parseInt(data[5]);
-                Subtask subtask = new Subtask(name, description, status, epicId);
+                Subtask subtask = new Subtask(name, description, status, epicId,null,null);
                 subtask.setId(id);
                 return subtask;
             default:
