@@ -23,12 +23,27 @@ public class Epic extends Task {
 
     @Override
     public Duration getDuration() {
-        return super.getDuration();
+        Duration totalDuration = Duration.ZERO;
+        for (Subtask subtask : subtasks) {
+            if (subtask.getDuration() != null) {
+                totalDuration = totalDuration.plus(subtask.getDuration());
+            }
+        }
+        return totalDuration;
     }
+
 
     @Override
     public LocalDateTime getStartTime() {
-        return super.getStartTime();
+        if (subtasks.isEmpty()) {
+            return null;
+        }
+
+        return subtasks.stream()
+                .filter(subtask -> subtask.getStartTime() != null)
+                .min(Comparator.comparing(Subtask::getStartTime))
+                .map(Subtask::getStartTime)
+                .orElse(null);
     }
 
     @Override
