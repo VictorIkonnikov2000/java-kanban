@@ -11,19 +11,19 @@ public class Main {
 
         //написать тесты
         Task task1 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
-                TaskStatus.NEW));
+                TaskStatus.NEW,null,null));
         Task task2 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
-                TaskStatus.NEW));
+                TaskStatus.NEW,null,null));
         Task task3 = taskManager.createTask(new Task("Задача ", "Описание задачи ",
-                TaskStatus.NEW));
+                TaskStatus.NEW,null,null));
 
 
         // Создание Эпика с двумя подзачами:
         Epic epic1 = taskManager.createEpic(new Epic("Эпик ", "Описание эпика "));
         Subtask subtask1 = taskManager.createSubtask(new Subtask("Задача 1", "Сделать фз4",
-                TaskStatus.NEW, epic1.getId()));
+                TaskStatus.NEW, epic1.getId(),null,null));
         Subtask subtask2 = taskManager.createSubtask(new Subtask("Задача 2", "Повторить материал",
-                TaskStatus.DONE, epic1.getId()));
+                TaskStatus.DONE, epic1.getId(),null,null));
 
 
 
@@ -54,6 +54,9 @@ public class Main {
 
         System.out.println("Проверяем историю");
         System.out.println(taskManager.getHistory());
+
+
+
 
 
     }
