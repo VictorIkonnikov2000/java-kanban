@@ -98,6 +98,7 @@ public class SubtaskHandler extends BaseHttpHandler implements HttpHandler {
             sendResponse(exchange, "Некорректный запрос", 400);
         }
     }
+
     private void sendResponse(HttpExchange exchange, String response, int statusCode)
             throws IOException {
         byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
@@ -107,7 +108,6 @@ public class SubtaskHandler extends BaseHttpHandler implements HttpHandler {
         }
         exchange.close();
     }
-
 
 }
 
