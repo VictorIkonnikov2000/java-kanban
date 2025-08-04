@@ -51,11 +51,11 @@ class HttpTaskServerTest {
     }
 
     @Test
-    void shouldReturn405OnPostTasks() throws IOException, InterruptedException {
+    void shouldReturn400OnPostTasks() throws IOException, InterruptedException {
         URI uri = baseUri.resolve("/tasks");
         HttpRequest request = HttpRequest.newBuilder().uri(uri).POST(HttpRequest.BodyPublishers.noBody()).build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        assertEquals(405, response.statusCode(), "Код статуса должен быть 405");
+        assertEquals(400, response.statusCode(), "Код статуса должен быть 400");
     }
 
 
