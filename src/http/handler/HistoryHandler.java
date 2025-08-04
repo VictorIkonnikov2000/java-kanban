@@ -1,6 +1,6 @@
 package http.handler;
 
-import com.google.gson.Gson;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import menegers.InMemoryTaskManager;
@@ -13,12 +13,9 @@ import java.util.List;
 
 public class HistoryHandler extends BaseHttpHandler implements HttpHandler {
 
-    private final InMemoryTaskManager taskManager;
-    private final Gson gson;
 
-    public HistoryHandler(InMemoryTaskManager taskManager, Gson gson) {
-        this.taskManager = taskManager;
-        this.gson = gson;
+    public HistoryHandler(InMemoryTaskManager taskManager) {
+        super(taskManager);
     }
 
     @Override

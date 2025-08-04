@@ -1,6 +1,9 @@
 package http.handler;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
+import menegers.InMemoryTaskManager;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +11,13 @@ import java.net.HttpURLConnection;
 
 public class BaseHttpHandler {
 
+    protected static final Gson gson = new Gson();
+    protected final InMemoryTaskManager taskManager;
+
+
+    public BaseHttpHandler(InMemoryTaskManager taskManager) {
+        this.taskManager = taskManager;
+    }
 
     protected void sendJson(HttpExchange exchange, int statusCode, String response) throws IOException {
         if (response == null) {
